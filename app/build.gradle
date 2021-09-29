@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.myapp"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         multiDexEnabled true
@@ -42,12 +42,21 @@ dependencies {
     // Dependencies for working with Architecture components
     // You'll probably have to update the version numbers in build.gradle (Project)
 
+
+    implementation 'nl.joery.animatedbottombar:library:1.1.0'
+
     // Room components
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
+    implementation 'com.google.firebase:firebase-firestore:23.0.3'
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
+    implementation platform('com.google.firebase:firebase-bom:28.4.1')
+    implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-database:20.0.1'
 
     // Lifecycle components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
@@ -63,7 +72,7 @@ dependencies {
     //FOR DIMENSION
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
-    
+
     //For Scanner
     implementation 'com.budiyev.android:code-scanner:2.1.0'
 
@@ -73,6 +82,10 @@ dependencies {
 
     //Volley
     implementation 'com.android.volley:volley:1.1.0'
+
+    implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0'
+
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
@@ -84,6 +97,12 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     // For control over item selection of both touch and mouse driven selection
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
+
+    implementation 'me.dm7.barcodescanner:zbar:1.9.13'
+
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.4'
+
+    implementation 'com.google.zxing:core:3.2.1'
 
 
 // Testing

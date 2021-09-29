@@ -5,4 +5,11 @@ class DataModel {
     var description:String=""
     var urlToImage:String=""
     var publishedAt:String=""
+
+    var timezone:String=""
+    var id:String=""
+    var name:String=""
+    var cod:String=""
+
+
 }

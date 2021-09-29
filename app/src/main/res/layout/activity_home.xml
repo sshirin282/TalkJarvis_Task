@@ -4,64 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:id="@+id/mainlayout">
+    tools:context=".HomeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RadioGroup
-            android:id="@+id/radiogroup"
-            android:background="@drawable/radiooutline"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-
-            <RadioButton
-                android:id="@+id/newsradio"
-                android:layout_width="@dimen/_150sdp"
-                android:gravity="center"
+            android:id="@+id/hometext"
+            android:textSize="@dimen/_15sdp"/>
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tablayout"
+            android:layout_below="@id/hometext">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:button="@android:color/transparent"
-                android:checked="true"
-                android:paddingLeft="@dimen/_16sdp"
-                android:paddingTop="@dimen/_3sdp"
-                android:paddingRight="@dimen/_16sdp"
-                android:paddingBottom="@dimen/_3sdp"
-                android:text="News"
-                android:textSize="@dimen/_15sdp"
-                android:textColor="@drawable/textchecked"
-                android:background="@drawable/tab_colour"/>
-
-            <RadioButton
-                android:id="@+id/weatherradio"
-                android:gravity="center"
-                android:textSize="@dimen/_15sdp"
-                android:layout_width="@dimen/_150sdp"
+                android:id="@+id/newtab"
+                android:text="News"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:button="@android:color/transparent"
-                android:paddingLeft="@dimen/_16sdp"
-                android:paddingTop="@dimen/_3sdp"
-                android:paddingRight="@dimen/_16sdp"
-                android:paddingBottom="@dimen/_3sdp"
-                android:text="Weather"
-                android:textColor="@drawable/textchecked"
-                android:background="@drawable/tab_colour"/>
-        </RadioGroup>
-
+                android:id="@+id/weathertab"
+                android:text="Weather"/>
+        </com.google.android.material.tabs.TabLayout>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/fragment"
-            android:layout_below="@id/radiogroup"/>
-    </RelativeLayout>
+            android:layout_below="@id/tablayout"
+            android:layout_above="@+id/bottomnavigation"/>
+
 
    <com.google.android.material.bottomnavigation.BottomNavigationView
        android:id="@+id/bottomnavigation"
@@ -75,5 +50,6 @@
        app:menu="@menu/menu_list"
        app:itemIconTint="@drawable/bottomselector"
        app:itemTextColor="@drawable/bottomselector"/>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

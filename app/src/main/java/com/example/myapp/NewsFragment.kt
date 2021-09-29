@@ -1,5 +1,6 @@
 package com.example.myapp
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -30,19 +31,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [NewsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class NewsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+class NewsFragment : Fragment(),Adapter.DataModelItemClicked {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -82,16 +71,10 @@ class NewsFragment : Fragment() {
                     dataModel.urlToImage=urlToImage
                     list.add(dataModel)
                 }
-               adapter=Adapter(context!!,list)
+               adapter=Adapter(context!!,list, this)
                 val layoutManager= LinearLayoutManager(context)
                 recyclerView.layoutManager=layoutManager
                 recyclerView.adapter=adapter
-//                adapter= Adapter(context!!,list)
-//            val layoutManager= LinearLayoutManager(context)
-//            recyclerView.layoutManager=layoutManager
-//            recyclerView.adapter=adapter
-
-
             },
             Response.ErrorListener {
                 Log.e("error",it.toString())
@@ -103,33 +86,23 @@ class NewsFragment : Fragment() {
                 return headers
             }
         }
-
         val queue= Volley.newRequestQueue(context)
         queue.add(stringRequest)
-
-
     }
 
 
 
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NewsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NewsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun DataModelItemClicked(list: DataModel) {
+        val intent= Intent(context,NewsViewActivity::class.java)
+        intent.putExtra("text1",list.title)
+        Log.e("title",list.title)
+        intent.putExtra("text2",list.description)
+        Log.e("title",list.description)
+        intent.putExtra("text3",list.publishedAt)
+        Log.e("title",list.publishedAt)
+        intent.putExtra("urlToImage",list.urlToImage)
+        Log.e("title",list.urlToImage)
+        startActivity(intent)
     }
 }
+

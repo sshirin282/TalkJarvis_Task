@@ -5,18 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".WeatherFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/adhiahsd"
-        android:textSize="@dimen/_15sdp"
-        android:text="jidiasdu"/>
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:id="@+id/recyclerview"-->
-<!--            android:layout_below="@id/radiogroup"/>-->
-
+        android:id="@+id/recyclerview" />
 
 
 </FrameLayout>
